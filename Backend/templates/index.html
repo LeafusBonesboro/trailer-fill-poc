@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailer Fill Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
+        form { display: inline-block; text-align: left; margin-top: 20px; }
+        label, select, input { display: block; margin: 10px 0; width: 100%; }
+        button { margin-top: 10px; padding: 10px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .result { margin-top: 20px; font-size: 20px; color: green; }
+    </style>
+</head>
+<body>
+    <h1>Trailer Fill Percentage Prediction</h1>
+    <form method="POST">
+        <label for="load_type">Select Load Type:</label>
+        <select name="load_type" required>
+            <option value="IC">IC (Large, Heavy Boxes)</option>
+            <option value="Overhead">Overhead (Small, Light Boxes)</option>
+            <option value="Chewy">Chewy (Medium, Heavy Boxes)</option>
+            <option value="Combination">Combination (Mixed Boxes)</option>
+        </select>
+
+        <label for="carton_count">Enter Carton Count:</label>
+        <input type="number" name="carton_count" min="1" required>
+
+        <button type="submit">Predict Fill Percentage</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">{{ prediction }}</div>
+    {% endif %}
+</body>
+</html>
